@@ -1,5 +1,5 @@
 
-"""Vérifie la version de Phyton et de requests dans l'environnement actif."""
+"""Vérifie la version de Python et de requests dans l'environnement actif."""
 
 import sys
 import requests
