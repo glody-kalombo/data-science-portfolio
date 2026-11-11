@@ -1,5 +1,3 @@
-# Duplicates.py
-
 # Analyse de Complexité Algorithmique : Boucle `for` vs `set`
 
 Ce projet illustre l'impact du choix des structures de données et de la complexité algorithmique sur les performances d'un programme Python (recherche de doublons / éléments uniques). Il compare une approche naïve par double boucle avec une approche optimisée utilisant une table de hachage (`set`).
@@ -30,12 +28,21 @@ Les tests ont été exécutés sur des listes de tailles n = 1_000, n = 5_000 et
 
 ## Analyse et cohérence théorique
 
-Lorsque la taille des données n est multipliée par 10 (passage de n = 1_000 à n = 10_000) :
+
+Lorsque la taille des données n est multipliée par 10 (passage de n = 1_000$ à n = 10_000$) :
 
 * Pour la boucle `for` :
-  {3.924097}{0.042961} approx n{91.3}
-  Le temps d'exécution est multiplié par environ **91**, ce qui est cohérent avec la complexité quadratique O(n^2) qui prédit un facteur 10^2 = \n{100}.
+  $$\frac{3.924097}{0.042961} \approx \mathbf{91.3}$$
+  Le temps d'exécution est multiplié par environ **91**, ce qui est cohérent avec la complexité quadratique $O(n^2)$ qui prédit un facteur $10^2 = \mathbf{100}$.
 
 * Pour la méthode `set` :
-  {0.001066}{0.000124} approx n{8.6}
+  $$\frac{0.001066}{0.000124} \approx \mathbf{8.6}$$
   Le temps d'exécution est multiplié par environ **8.6**, ce qui correspond à la complexité linéaire $O(n)$ qui prédit un facteur 10.
+
+## Exécution
+
+Assurez-vous d'avoir Python 3 installé sur votre machine, puis lancez le script depuis votre terminal avec la commande suivante :
+
+```bash
+python3 duplicates.py
+```
