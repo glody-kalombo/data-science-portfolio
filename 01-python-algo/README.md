@@ -8,9 +8,9 @@ Mesurer et comparer le temps d'exécution de deux méthodes résolvant le même 
 
 ## Algorithmes comparés
 
-### 1. Méthode naïve : Boucles `for` imbriquées — $O(n^2)
+### 1. Méthode naïve : Boucles `for` imbriquées — $O(n^2)$
 * Principe : Pour chaque élément de la liste, on parcourt le reste de la liste pour vérifier s'il est déjà présent.
-* Analyse : La double boucle effectue environ {n^2}{2} comparaisons (n-1, puis n-2, puis n-3). Pour 10_000 éléments, cela représente près de 50 millions de comparaisons.
+* Analyse : La double boucle effectue environ n²/2 comparaisons (n-1, puis n-2, puis n-3). Pour 10_000 éléments, cela représente près de 50 millions de comparaisons.
 
 ### 2. Méthode optimisée : Utilisation d'un `set` — $O(n)
 * Principe : On parcourt la liste une seule fois en stockant les éléments déjà rencontrés dans un ensemble (`set`).
