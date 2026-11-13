@@ -1,4 +1,4 @@
-"""Compte le nombre de repétition des mots dans un text et une liste des mots avec leur fréquence de repétition"""
+"""Compte le nombre de répétition des mots dans un texte et une liste des mots avec leur fréquence de répétition"""
 
 import string
 from collections import Counter
@@ -6,13 +6,14 @@ from collections import Counter
 def normalize(text):
     """Met le texte en minuscules, retire la ponctuation et retourne la liste des mots"""
     text = text.lower()
-    translator = str.maketrans("", "", string.punctuation)
-    text_without_punctuation = text.translate(translator)
-    return text_without_punctuation.split()
+    spaces = " " * len(string.punctuation)
+    translator = str.maketrans(string.punctuation, spaces)
+    
+    return text.translate(translator).split()
 
 
 def count_words(words):
-    """Retourne un dictionnaire {mot: nombre d'occurences}"""
+    """Retourne un dictionnaire {mot: nombre d'occurrences}"""
     counts = {}
     for word in words:
         counts[word] = counts.get(word, 0) + 1
@@ -20,14 +21,16 @@ def count_words(words):
 
 
 def top_k(counts, k):
-    """Retourne les k mots les plus fréquents, sous forme de liste de tuples (mot, nombre), triés par nombre déroissant puis par ordre alphabétique en cas d'égalité."""
+    """Retourne les k mots les plus fréquents, sous forme de 
+    liste de tuples (mot, nombre), triés par nombre décroissant puis par ordre alphabétique
+    en cas d'égalité."""
     sorted_items = sorted(counts.items(), key=lambda item: (-item[1], item[0]))
     return sorted_items[:k]
 
 
 def main():
     """Application des fonctions dans un paragraphe et affichage des resultats"""
-    paragraphe = """
+    text = """
     L'intelligence artificielle transforme profondément notre façon de travailler et de coder.
     Aujourd'hui, les développeurs utilisent des outils intelligents pour analyser des données,
     automatiser des tâches répétitives et résoudre des problèmes complexes plus rapidement.
@@ -42,27 +45,30 @@ def main():
     k = 5
 
     # Nettoyage et découpage du texte
-    words = normalize(paragraphe)
+    words = normalize(text)
 
-    # Comptage des occurences
+    # Comptage des occurrences
     counts = count_words(words)
 
     # Récupération des k mots les plus fréquents
-    top_5_words = top_k(counts, k)
+    top_words = top_k(counts, k)
 
-    # Affichage des resultats
+    # Affichage des résultats
     print("=== Résultat avec nos fonctions ===")
     print(f"Nombre total de mots : {len(words)}")
     print(f"Top {k} des mots les plus fréquents : ")
-    for mot, nombre in top_5_words:
-        print(f"    - {mot} : {nombre}")
+    for word, count in top_words:
+        print(f"    - {word} : {count}")
 
-    # Vérificatio avec collections.Counter
-    counter_top_5 = Counter(words).most_common(k)
+    # Vérification avec collections.Counter
+    counter_top = Counter(words).most_common(k)
 
-    print("\n== Vérification avec Counter.most_common(5) ===")
-    for mot, freq in counter_top_5:
-        print(f"    - {mot} : {freq}") 
+    print(f"\n=== Vérification avec Counter.most_common({k}) ===")
+    for word, freq in counter_top:
+        print(f"    - {word} : {freq}")
+
+    # Vérification si les 2 listes sont identiques
+    assert top_k(counts, k) == Counter(words).most_common(k), "Les résultats diffèrent"
 
 
 if __name__ == "__main__":
