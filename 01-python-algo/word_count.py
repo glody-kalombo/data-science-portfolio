@@ -6,9 +6,10 @@ from collections import Counter
 def normalize(text):
     """Met le texte en minuscules, retire la ponctuation et retourne la liste des mots"""
     text = text.lower()
-    translator = str.maketrans("", "", string.punctuation)
-    text_without_punctuation = text.translate(translator)
-    return text_without_punctuation.split()
+    spaces = " " * len(string.punctuation)
+    translator = str.maketrans(string.punctuation, spaces)
+    
+    return text.translate(translator).split()
 
 
 def count_words(words):
