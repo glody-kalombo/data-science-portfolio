@@ -41,63 +41,35 @@ def main():
     """Fait une comparaison entre la recherche linéaire et dichotomique"""
     numbers = [10, 20, 30, 40, 50]
 
-    # Tests des assert pour binary_search
+    # Tests des assert pour binary_search et linear_search
 
-    # La cible est le premier élément
-    assert binary_search(numbers, 10) == 0
+    for search in (linear_search, binary_search):
+        # La cible est le premier élément
+        assert search(numbers, 10) == 0
 
-    # La cible est le dernier élément
-    assert binary_search(numbers, 50) == 4
+        # La cible est le dernier élément
+        assert search(numbers, 50) == 4
 
-    # La cible est au milieu
-    assert binary_search(numbers, 30)  == 2
+        # La cible est au milieu
+        assert search(numbers, 30)  == 2
 
-    # La cible est absente et plus petite que tout
-    assert binary_search(numbers, 4) == -1
+        # La cible est absente et plus petite que tout
+        assert search(numbers, 4) == -1
 
-    # la cible est absente et plus grande que tout
-    assert binary_search(numbers, 99) == -1
+        # la cible est absente et plus grande que tout
+        assert search(numbers, 99) == -1
 
-    # La cible est absente mais entre deux
-    assert binary_search(numbers, 35) == -1
+        # La cible est absente mais entre deux
+        assert search(numbers, 35) == -1
 
-    # La liste est vide
-    assert binary_search([], 85) == -1
+        # La liste est vide
+        assert search([], 85) == -1
 
-    # La liste ne contient qu'un seul élément (présent)
-    assert binary_search([86], 86) == 0
+        # La liste ne contient qu'un seul élément (présent)
+        assert search([86], 86) == 0
 
-    # La liste ne contient qu'un seul élément (absent)
-    assert binary_search([48], 50) == -1
-
-    # Tests des assert avec linear_search
-
-    # La cible est le premier élément
-    assert linear_search(numbers, 10) == 0
-
-    # La cible est le dernier élément
-    assert linear_search(numbers, 50) == 4
-
-    # La cible est au milieu
-    assert linear_search(numbers, 30)  == 2
-
-    # La cible est absente et plus petite que tout
-    assert linear_search(numbers, 4) == -1
-
-    # la cible est absente et plus grande que tout
-    assert linear_search(numbers, 99) == -1
-
-    # La cible est absente mais entre deux
-    assert linear_search(numbers, 35) == -1
-
-    # La liste est vide
-    assert linear_search([], 85) == -1
-
-    # La liste ne contient qu'un seul élément (présent)
-    assert linear_search([86], 86) == 0
-
-    # La liste ne contient qu'un seul élément (absent)
-    assert linear_search([48], 50) == -1
+        # La liste ne contient qu'un seul élément (absent)
+        assert search([48], 50) == -1
 
     print("Toutes les vérifications assert ont réussi avec succès.\n")
 
@@ -120,4 +92,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-measure
