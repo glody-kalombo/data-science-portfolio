@@ -33,13 +33,13 @@ def merge(left, right):
 
     # Ajouter les éléments restants de left
     while i < len(left):
-            result.append(left[i])
-            i += 1
+        result.append(left[i])
+        i += 1
 
     # Ajouter les éléments restants de right
     while j < len(right):
-            result.append(right[j])
-            j += 1
+        result.append(right[j])
+        j += 1
 
     return result
 
